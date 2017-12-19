@@ -25,7 +25,7 @@ public class Frequencer implements FrequencerInterface{
     int targetLength = myTarget.length;
     int spaceLength = mySpace.length;
     int count = 0;
-    for(int start = 0; start<spaceLength; start++) { // Is it OK?
+    for(int start = 0; start<spaceLength; start++) { // ターゲットが0文字のとき-1を返すように修正しました
       boolean abort = false;
       if(targetLength == 0) { return -1; }
       for(int i = 0; i<targetLength; i++) {
