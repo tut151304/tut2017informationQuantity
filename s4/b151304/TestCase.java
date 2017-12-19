@@ -1,4 +1,4 @@
-package s4.b151304; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID. 
+package s4.b151304; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID.
 import java.lang.*;
 import s4.specification.*;
 
@@ -24,8 +24,8 @@ public interface InformationEstimatorInterface{
 // It returns Double.MAX_VALUE, when the true value is infinite, or space is not set.
 // The behavior is undefined, if the true value is finete but larger than Double.MAX_VALUE.
 // Note that this happens only when the space is unreasonably large. We will encounter other problem anyway.
-// Otherwise, estimation of information quantity, 
-}                        
+// Otherwise, estimation of information quantity,
+}
 */
 
 
@@ -45,6 +45,23 @@ public class TestCase {
 	catch(Exception e) {
 	    System.out.println("Exception occurred: STOP");
 	}
+
+  //ターゲットが文字列０のテストケースを追加
+  try {
+      FrequencerInterface  myObject;
+      int freq;
+      System.out.println("checking s4.b151304.Frequencer");
+      myObject = new s4.b151304.Frequencer();
+      myObject.setSpace("Hi Ho Hi Ho".getBytes());
+      myObject.setTarget("".getBytes());
+      freq = myObject.frequency();
+      System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
+      if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+  }
+  catch(Exception e) {
+      System.out.println("Exception occurred: STOP");
+  }
+
 
 	try {
 	    InformationEstimatorInterface myObject;
@@ -70,5 +87,4 @@ public class TestCase {
 	}
 
     }
-}	    
-	    
+}
