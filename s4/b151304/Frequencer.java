@@ -14,7 +14,6 @@ interface FrequencerInterface {     // このインタフェースは、周波�
     // STARTまたはENDの値が正しくない場合の動作は未定義です。
 */
 
-
 public class Frequencer implements FrequencerInterface {
   // Code to start with: This code is not working, but good start point to work.
   byte [] myTarget;
@@ -137,8 +136,6 @@ public class Frequencer implements FrequencerInterface {
 
   private int subByteStartIndex(int start, int end) {
     // この関数は、subBytes以上の最初のsuffixのインデックスを返します。
-
-    // まだ実装されていません。
     // For "Ho", it will return 5 for "Hi Ho Hi Ho".
     // For "Ho ", it will return 6 for "Hi Ho Hi Ho".
 
@@ -150,8 +147,6 @@ public class Frequencer implements FrequencerInterface {
 
   private int subByteEndIndex(int start, int end) {
     // この関数は、subBytesより大きい最初のsuffixの次のインデックスを返します。
-
-    // まだ実装されていません。
     // For "Ho", it will return 7 for "Hi Ho Hi Ho".
     // For "Ho ", it will return 7 for "Hi Ho Hi Ho".
 
