@@ -124,7 +124,7 @@ public class Frequencer implements FrequencerInterface {
 
     byte [] submySpace_i = java.util.Arrays.copyOfRange(mySpace, suffixArray[i], mySpace.length);
 
-    if (mySpace.length - i >= myTarget.length) {
+    if (submySpace_i.length >= myTarget.length) {
       for (int a = start; a < end; a++) {
         if (submySpace_i[a] > myTarget[a]) return 1;
         else if (submySpace_i[a] < myTarget[a]) return -1;
@@ -139,7 +139,7 @@ public class Frequencer implements FrequencerInterface {
     // For "Ho", it will return 5 for "Hi Ho Hi Ho".
     // For "Ho ", it will return 6 for "Hi Ho Hi Ho".
 
-    for (int i = 0; i < suffixArray.length; i++) {
+    for (int i = 0; i < mySpace.length; i++) {
       if (targetCompare(i, start, end) == 0) return i;
     }
     return suffixArray.length;
@@ -150,7 +150,7 @@ public class Frequencer implements FrequencerInterface {
     // For "Ho", it will return 7 for "Hi Ho Hi Ho".
     // For "Ho ", it will return 7 for "Hi Ho Hi Ho".
 
-    for (int i = 0; i < suffixArray.length - 1; i++) {
+    for (int i = 0; i < mySpace.length - 1; i++) {
       if (targetCompare(i, start, end) == 0 && targetCompare(i + 1, start, end) != 0) return i + 1;
     }
     return suffixArray.length;
@@ -171,10 +171,10 @@ public class Frequencer implements FrequencerInterface {
     int first = subByteStartIndex(start,end);
     int last1 = subByteEndIndex(start, end);
 
-    /* 検査コード
+    // 検査コード
     for(int k=start;k<end;k++) { System.out.write(myTarget[k]); }
-    system.out.printf(": first=%d last1=%d\n", first, last1);
-    */
+    System.out.printf(": first=%d last1=%d\n", first, last1);
+
     return last1 - first;
   }
 
@@ -193,7 +193,7 @@ public class Frequencer implements FrequencerInterface {
     try {
       frequencerObject = new Frequencer();
       frequencerObject.setSpace("Hi Ho Hi Ho".getBytes());
-      frequencerObject.setTarget("H".getBytes());
+      frequencerObject.setTarget("o Hi Ho".getBytes());
       int result = frequencerObject.frequency();
       System.out.print("Freq = " + result + " ");
       if(4 == result) { System.out.println("OK"); }
