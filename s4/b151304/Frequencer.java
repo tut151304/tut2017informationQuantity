@@ -139,7 +139,7 @@ public class Frequencer implements FrequencerInterface {
     // For "Ho", it will return 5 for "Hi Ho Hi Ho".
     // For "Ho ", it will return 6 for "Hi Ho Hi Ho".
 
-    for (int i = 0; i < mySpace.length; i++) {
+    for (int i = 0; i < suffixArray.length; i++) {
       if (targetCompare(i, start, end) == 0) return i;
     }
     return suffixArray.length;
@@ -150,7 +150,7 @@ public class Frequencer implements FrequencerInterface {
     // For "Ho", it will return 7 for "Hi Ho Hi Ho".
     // For "Ho ", it will return 7 for "Hi Ho Hi Ho".
 
-    for (int i = 0; i < mySpace.length; i++) {
+    for (int i = 0; i < suffixArray.length - 1; i++) {
       if (targetCompare(i, start, end) == 0 && targetCompare(i + 1, start, end) != 0) return i + 1;
     }
     return suffixArray.length;
