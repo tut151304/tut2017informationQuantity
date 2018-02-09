@@ -71,7 +71,7 @@ public class TestCase {
       System.out.println("checking s4.b151304.Frequencer");
       myObject = new s4.b151304.Frequencer();
       myObject.setSpace("Hi Ho Hi Ho".getBytes());
-      myObject.setTarget("Ho".getBytes());
+      myObject.setTarget("o".getBytes());
       freq = myObject.frequency();
       System.out.print("\"o\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
       if(2 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
@@ -90,7 +90,7 @@ public class TestCase {
       myObject.setTarget("o Hi Ho".getBytes());
       freq = myObject.frequency();
       System.out.print("\"o Hi Ho\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
-      if(2 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+      if(1 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
     }
     catch(Exception e) {
       System.out.println("Exception occurred: STOP");
@@ -106,11 +106,28 @@ public class TestCase {
       myObject.setTarget("z".getBytes());
       freq = myObject.frequency();
       System.out.print("\"z\" in \"Hi Ho Hi Ho z\" appears "+freq+" times. ");
-      if(2 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+      if(1 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
     }
     catch(Exception e) {
       System.out.println("Exception occurred: STOP");
     }
+
+    //ターゲットの文字列空白の場合
+    try {
+      FrequencerInterface  myObject;
+      int freq;
+      System.out.println("checking s4.b151304.Frequencer");
+      myObject = new s4.b151304.Frequencer();
+      myObject.setSpace("Hi Ho Hi Ho".getBytes());
+      myObject.setTarget(" ".getBytes());
+      freq = myObject.frequency();
+      System.out.print("\" \" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
+      if(3 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+    }
+    catch(Exception e) {
+      System.out.println("Exception occurred: STOP");
+    }
+
 
     //ターゲットの長さが0の場合
     try {
@@ -144,29 +161,80 @@ public class TestCase {
       System.out.println("Exception occurred: STOP");
     }
 
-    // // default
+    // //space is 100bite. target is 10bite
     // try {
-    //   InformationEstimatorInterface myObject;
-    //   double value;
-    //   System.out.println("checking s4.b151304.InformationEstimator");
-    //   myObject = new s4.b151304.InformationEstimator();
-    //   myObject.setSpace("3210321001230123".getBytes());
-    //   myObject.setTarget("0".getBytes());
-    //   value = myObject.estimation();
-    //   System.out.println(">0 "+value);
-    //   myObject.setTarget("01".getBytes());
-    //   value = myObject.estimation();
-    //   System.out.println(">01 "+value);
-    //   myObject.setTarget("0123".getBytes());
-    //   value = myObject.estimation();
-    //   System.out.println(">0123 "+value);
-    //   myObject.setTarget("00".getBytes());
-    //   value = myObject.estimation();
-    //   System.out.println(">00 "+value);
+    //   FrequencerInterface  myObject;
+    //   int freq;
+    //   String strSpace =
+    //   "The bento has become a medium of communication, a way for the creator" +
+    //   "to express their feelings for the person who will eat it.";
+    //
+    //   String strTarget = "communication";
+    //
+    //   System.out.println("checking s4.b151304.Frequencer");
+    //   myObject = new s4.b151304.Frequencer();
+    //   myObject.setSpace(strSpace.getBytes());
+    //   myObject.setTarget(strTarget.getBytes());
+    //   freq = myObject.frequency();
+    //   System.out.print(strSpace+" in "+strTarget+" appears "+freq+" times. ");
+    //   if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
     // }
     // catch(Exception e) {
     //   System.out.println("Exception occurred: STOP");
     // }
+
+    // //space is 100bite. target is 10bite
+    // try {
+    //   FrequencerInterface  myObject;
+    //   int freq;
+    //   String strSpace =
+    //   "The bento has become a medium of communication, a way for the creator" +
+    //   "to express their feelings for the person who will eat it.";
+    //
+    //   String strTarget = "communication";
+    //
+    //   System.out.println("checking s4.b151304.Frequencer");
+    //   myObject = new s4.b151304.Frequencer();
+    //   myObject.setSpace(strSpace.getBytes());
+    //   myObject.setTarget(strTarget.getBytes());
+    //   freq = myObject.frequency();
+    //   System.out.print(strSpace+" in "+strTarget+" appears "+freq+" times. ");
+    //   if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+    // }
+    // catch(Exception e) {
+    //   System.out.println("Exception occurred: STOP");
+    // }
+
+    // default
+    try {
+      InformationEstimatorInterface myObject;
+      double value;
+      System.out.println("checking s4.b151304.InformationEstimator");
+      myObject = new s4.b151304.InformationEstimator();
+      myObject.setSpace("3210321001230123".getBytes());
+      myObject.setTarget("0".getBytes());
+      value = myObject.estimation();
+      System.out.println(">0 "+value);
+      myObject.setTarget("01".getBytes());
+      value = myObject.estimation();
+      System.out.println(">01 "+value);
+      myObject.setTarget("0123".getBytes());
+      value = myObject.estimation();
+      System.out.println(">0123 "+value);
+      myObject.setTarget("00".getBytes());
+      value = myObject.estimation();
+      System.out.println(">00 "+value);
+      myObject.setTarget("23".getBytes());
+      value = myObject.estimation();
+      System.out.println(">23 "+value);
+      myObject.setTarget("3".getBytes());
+      value = myObject.estimation();
+      System.out.println(">3 "+value);
+
+    }
+    catch(Exception e) {
+      System.out.println("Exception occurred: STOP\n"+e);
+    }
 
     // //ターゲットが長さが0の場合
     // try {
