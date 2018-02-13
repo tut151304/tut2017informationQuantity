@@ -32,7 +32,7 @@ public class Frequencer implements FrequencerInterface {
   private void printSuffixArray(int[] array) {
     if(spaceReady) {
       for(int i = 0; i < array.length; i++) {
-        System.out.print(i+":"+array[i]+":"); // 検査コード
+        // System.out.print(i+":"+array[i]+":"); // 検査コード
         for(int j = array[i]; j < mySpace.length; j++) {
           System.out.write(mySpace[j]);
         }
@@ -89,22 +89,22 @@ public class Frequencer implements FrequencerInterface {
     // printSuffixArray(suffixArray); // 検査コード
     // System.out.println("-------------------"); // 検査コード
 
-    // bubbleSort();
+    // bubbleSort(suffixArray);
     mergeSort(suffixArray);
     // printSuffixArray(suffixArray); // 検査コード
   }
 
   /* バブルソート */
-  public void bubbleSort() {
+  public void bubbleSort(int[] array) {
     int temp;
-    for(int i = 0; i < suffixArray.length - 1; i++) {
-      for(int j = i + 1; j < suffixArray.length; j++) {
-        int flag = suffixCompare(suffixArray[i],suffixArray[j]);
+    for(int i = 0; i < array.length - 1; i++) {
+      for(int j = i + 1; j < array.length; j++) {
+        int flag = suffixCompare(array[i],array[j]);
         if(flag == 1) { // iの方が大きかったら入れ替える
-          temp = suffixArray[i];
-          suffixArray[i] = suffixArray[j];
-          suffixArray[j] = temp;
-          // printSuffixArray(suffixArray); // 検査コード
+          temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+          // printSuffixArray(array); // 検査コード
           // System.out.println("-------------------"); // 検査コード
         }
       }
@@ -113,6 +113,12 @@ public class Frequencer implements FrequencerInterface {
 
   /* マージソート */
   public void mergeSort(int[] array) {
+
+    if (array.length > 1 && array.length < 5) {
+      bubbleSort(array);
+      return;
+    }
+
     if(array.length > 1) {
       int[] left = new int[array.length / 2];
       int[] right = new int[array.length - left.length];
@@ -260,6 +266,11 @@ public class Frequencer implements FrequencerInterface {
       if(abort == false) { count++; }
     }
     */
+
+    // setなしでsubByteFrequencyを呼ばれた場合の例外処理
+    if(targetReady == false) return -1;
+    if(spaceReady == false) return 0;
+
     int first = subByteStartIndex(start,end);
     int last1 = subByteEndIndex(start, end);
 
