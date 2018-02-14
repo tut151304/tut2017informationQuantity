@@ -24,6 +24,9 @@ public class Frequencer implements FrequencerInterface {
 
   int [] suffixArray;
 
+  /** 作業領域用データ */
+   private static int[] tmp = null;
+
   /*
   変数 "suffixArray"は、mySpaceのsuffixがソートされた配列です。
   各suffixは、mySpaceの開始位置である整数で表されます。
@@ -89,16 +92,16 @@ public class Frequencer implements FrequencerInterface {
     // printSuffixArray(suffixArray); // 検査コード
     // System.out.println("-------------------"); // 検査コード
 
-    // bubbleSort(suffixArray);
+    // bubbleSort(suffixArray, 0, space.length-1);
     mergeSort(suffixArray);
     // printSuffixArray(suffixArray); // 検査コード
   }
 
   /* バブルソート */
-  public void bubbleSort(int[] array) {
+  public void bubbleSort(int[] array, int min, int max) {
     int temp;
-    for(int i = 0; i < array.length - 1; i++) {
-      for(int j = i + 1; j < array.length; j++) {
+    for(int i = min; i < max; i++) {
+      for(int j = i + 1; j < max+1; j++) {
         int flag = suffixCompare(array[i],array[j]);
         if(flag == 1) { // iの方が大きかったら入れ替える
           temp = array[i];
@@ -113,11 +116,6 @@ public class Frequencer implements FrequencerInterface {
 
   /* マージソート */
   public void mergeSort(int[] array) {
-
-    if (array.length > 1 && array.length < 5) {
-      bubbleSort(array);
-      return;
-    }
 
     if(array.length > 1) {
       int[] left = new int[array.length / 2];
@@ -303,7 +301,8 @@ public class Frequencer implements FrequencerInterface {
       else {System.out.println("WRONG"); }
     }
     catch(Exception e) {
-      System.out.println("STOP\n"+e);
+      System.out.println("STOP\n");
+      e.printStackTrace();
     }
   }
 }
